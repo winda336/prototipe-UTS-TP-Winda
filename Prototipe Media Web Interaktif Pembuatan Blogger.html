@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Media Web Interaktif Pembuatan Blogger</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+<style>
+:root{--pri:#1A73E8;--sec:#FF5722;--bg:#F8F9FA;--surf:#fff;--txt:#1f2329;--mut:#5b6572;--line:#dde2e8;--ok:#28A745;--bad:#DC3545;--okbg:#e8f6ec;--badbg:#fdecee;--pribg:#e8f0fe;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#12161c;--surf:#1b2129;--txt:#eef1f4;--mut:#a3adb9;--line:#2d3641;--pribg:#16294a;--okbg:#12301c;--badbg:#3a1a1e;--pri:#6aa6ff}}
+:root[data-theme="dark"]{--bg:#12161c;--surf:#1b2129;--txt:#eef1f4;--mut:#a3adb9;--line:#2d3641;--pribg:#16294a;--okbg:#12301c;--badbg:#3a1a1e;--pri:#6aa6ff}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--txt);font:16px/1.5 Inter,Roboto,system-ui,sans-serif}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);background:var(--surf);z-index:10}
+header{position:sticky;top:env(safe-area-inset-top,0px);z-index:11;background:var(--surf);border-bottom:1px solid var(--line)}
+.bar{max-width:1100px;margin:auto;display:flex;align-items:center;gap:8px;padding:10px 16px}
+.logo{font-weight:800;font-size:18px;margin-right:auto;display:flex;align-items:center;gap:8px;color:var(--txt);background:none;border:0;cursor:pointer;padding:0}
+.logo i{background:var(--sec);color:#fff;border-radius:8px;width:28px;height:28px;display:grid;place-items:center;font-style:normal}
+nav{display:flex;gap:4px}
+nav button,.menu{font:inherit;background:none;border:0;color:var(--txt);padding:8px 12px;border-radius:8px;cursor:pointer}
+nav button:hover{background:var(--pribg)}
+nav button[aria-current=page]{background:var(--pribg);color:var(--pri);font-weight:600}
+.menu{display:none;border:1px solid var(--line)}
+:focus-visible{outline:3px solid var(--sec);outline-offset:2px}
+main{max-width:1100px;margin:auto;padding:24px 16px 48px}
+section{display:none}section.on{display:block}
+h1{font-size:32px;line-height:1.2;margin:0 0 12px}h2{font-size:24px;margin:0 0 12px}h3{font-size:19px;margin:0 0 8px}
+p{margin:0 0 12px;max-width:70ch}.mut{color:var(--mut)}
+.hero{background:var(--pri);color:#fff;border-radius:16px;padding:40px 32px;display:grid;grid-template-columns:1.2fr 1fr;gap:24px;align-items:center}
+.hero p{color:#e6efff}
+.btn{font:inherit;font-weight:600;border:0;border-radius:10px;padding:12px 20px;cursor:pointer;background:var(--sec);color:#fff}
+.btn.ghost{background:var(--surf);color:var(--pri);border:1px solid var(--line)}
+.btn.ghost:hover{background:var(--pribg)}
+.grid{display:grid;gap:16px;grid-template-columns:repeat(4,1fr);margin-top:20px}
+.g3{grid-template-columns:repeat(3,1fr)}.g2{grid-template-columns:repeat(2,1fr)}
+.card{background:var(--surf);border:1px solid var(--line);border-radius:12px;padding:18px}
+.quick{text-align:left;font:inherit;color:var(--txt);cursor:pointer}
+.quick:hover{border-color:var(--pri)}
+.ic{font-size:26px;display:block;margin-bottom:6px}
+.nxt{display:flex;justify-content:space-between;gap:8px;margin-top:28px;flex-wrap:wrap}
+ul.tp{padding-left:20px;margin:0 0 12px}ul.tp li{margin-bottom:6px}
+.sub{border-left:6px solid var(--pri)}
+.det{display:none;margin-top:10px;color:var(--mut)}.sub.open .det{display:block}
+.sub button.t{font:inherit;font-weight:600;font-size:19px;background:none;border:0;color:var(--txt);cursor:pointer;padding:0;text-align:left;width:100%}
+.pp{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:16px}
+.post{border-top:6px solid var(--pri)}.page{border-top:6px solid var(--sec)}
+.tabs{display:flex;gap:8px;margin-bottom:16px;flex-wrap:wrap}
+.tabs button{font:inherit;border:1px solid var(--line);background:var(--surf);color:var(--txt);border-radius:999px;padding:8px 18px;cursor:pointer}
+.tabs button[aria-selected=true]{background:var(--pri);border-color:var(--pri);color:#fff;font-weight:600}
+.tut{display:grid;grid-template-columns:1.4fr 1fr;gap:20px;align-items:start}
+.mock{display:flex;border:1px solid var(--line);border-radius:10px;overflow:hidden;background:#fff;color:#222;font-size:13px;min-height:240px}
+.mock aside{width:34%;background:#f1f3f4;padding:10px 6px;display:flex;flex-direction:column;gap:4px}
+.mock aside span{padding:7px 10px;border-radius:6px;position:relative}
+.mock .m{flex:1;padding:14px}
+.mock .m b{display:block;margin-bottom:8px}
+.fake{height:10px;background:#e3e6ea;border-radius:4px;margin:8px 0}
+.mock .mb{display:inline-block;background:#f57c00;color:#fff;padding:7px 12px;border-radius:6px;position:relative}
+.hl{outline:3px solid var(--sec);outline-offset:1px;background:#fff3ee;font-weight:700}
+.hl::after{content:"◀ klik di sini";position:absolute;left:calc(100% + 6px);top:50%;transform:translateY(-50%);color:var(--sec);font-size:12px;font-weight:700;white-space:nowrap;z-index:2}
+.mock aside .hl::after{left:auto;right:-4px;transform:translate(100%,-50%)}
+.mock .mb.hl::after{left:auto;right:0;top:calc(100% + 4px);transform:none}
+.mock.big{font-size:18px;min-height:360px}
+.chk label{display:flex;gap:8px;align-items:flex-start;margin-bottom:8px}
+.ov{position:fixed;inset:0;background:rgba(0,0,0,.65);display:none;place-items:center;z-index:30;padding:16px}
+.ov.on{display:grid}.ov>div{max-width:720px;width:100%}
+.q{margin-bottom:14px}.q label{display:flex;gap:10px;padding:9px 12px;border:1px solid var(--line);border-radius:8px;margin-top:6px;cursor:pointer}
+.q label:hover{background:var(--pribg)}
+.fb{display:none;margin-top:8px;padding:10px 12px;border-radius:8px;font-size:15px}
+.q.ok .fb{display:block;background:var(--okbg);border-left:5px solid var(--ok)}
+.q.no .fb{display:block;background:var(--badbg);border-left:5px solid var(--bad)}
+#skor{display:none;text-align:center;margin-bottom:18px;border:2px solid var(--pri)}
+#skor.on{display:block}#skor .n{font-size:48px;font-weight:800;color:var(--pri)}
+.ft{text-align:center;color:var(--mut);font-size:14px;padding:20px}
+@media (max-width:768px){
+ .menu{display:block}nav{display:none;position:absolute;left:0;right:0;top:100%;background:var(--surf);border-bottom:1px solid var(--line);flex-direction:column;padding:8px 16px}
+ nav.on{display:flex}
+ .hero,.tut,.pp{grid-template-columns:1fr}.hero{padding:28px 20px}
+ .grid,.g3,.g2{grid-template-columns:1fr}h1{font-size:26px}
+}
+@media (min-width:769px) and (max-width:1023px){.grid{grid-template-columns:repeat(2,1fr)}}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+</head>
+<body>
+<header><div class="bar">
+<button class="logo" data-go="home" aria-label="Beranda"><i>B</i>Web Learning Blogger</button>
+<button class="menu" id="mn" aria-label="Buka menu" aria-expanded="false">☰ Menu</button>
+<nav id="nv"></nav></div></header>
+<main>
+
+<section id="home" class="on">
+<div class="hero"><div>
+<h1>Selamat datang di web pembelajaran interaktif pembuatan blog dengan Blogger</h1>
+<p>Media pendamping Informatika untuk siswa kelas XII SMA. Belajar bertahap, berlatih, lalu cek pemahamanmu dengan kuis.</p>
+<button class="btn" data-go="petunjuk">Mulai belajar</button></div>
+<div id="art" role="img" aria-label="Ilustrasi laptop yang menampilkan dashboard Blogger"></div></div>
+<h2 style="margin-top:28px">Akses cepat</h2>
+<div class="grid">
+<button class="card quick" data-go="petunjuk"><span class="ic">ℹ️</span><b>Petunjuk</b><br><span class="mut">Cara memakai media dan tujuan belajar</span></button>
+<button class="card quick" data-go="materi"><span class="ic">📖</span><b>Materi</b><br><span class="mut">CMS, dashboard, post dan page</span></button>
+<button class="card quick" data-go="tutorial"><span class="ic">🧭</span><b>Tutorial</b><br><span class="mut">Langkah praktik dengan gambar</span></button>
+<button class="card quick" data-go="kuis"><span class="ic">✅</span><b>Kuis</b><br><span class="mut">10 soal dengan skor otomatis</span></button>
+</div></section>
+
+<section id="petunjuk">
+<h1>Petunjuk penggunaan dan tujuan pembelajaran</h1>
+<div class="grid g2">
+<div class="card"><h3>Petunjuk penggunaan media</h3>
+<ul class="tp">
+<li><b>🏠 Home</b>: kembali ke beranda dari halaman mana pun.</li>
+<li><b>📖 Materi</b>: baca konsep dasar secara ringkas.</li>
+<li><b>🧭 Tutorial</b>: ikuti langkah praktik. Pilih tab langkah, klik gambar untuk memperbesar.</li>
+<li><b>✅ Kuis</b>: pilih jawaban, tekan Kirim jawaban, lihat skor dan pembahasan.</li>
+<li><b>Lanjut</b>: pindah ke halaman berikutnya.</li></ul></div>
+<div class="card"><h3>Capaian pembelajaran</h3>
+<p>Peserta didik mampu memanfaatkan teknologi web untuk mengelola dan mempublikasikan konten digital secara terstruktur dan etis.</p>
+<h3>Tujuan pembelajaran</h3>
+<ul class="tp"><li>Menjelaskan konsep dasar web blog dan CMS.</li>
+<li>Membuat blog dan mengatur tema serta tata letak.</li>
+<li>Mempublikasikan dan mengelola post dan page.</li></ul></div></div>
+<div class="nxt"><button class="btn ghost" data-go="home">🏠 Home</button><button class="btn" data-go="materi">Lanjut ke materi</button></div>
+</section>
+
+<section id="materi">
+<h1>Modul materi</h1>
+<p class="mut">Klik kartu sub-bab untuk membuka detailnya.</p>
+<div class="grid g3" id="sb"></div>
+<h2 style="margin-top:28px">Perbedaan Post dan Page</h2>
+<div class="pp">
+<div class="card post"><h3>Post</h3><ul class="tp"><li>Artikel yang tampil berurutan dari yang terbaru.</li><li>Punya tanggal terbit, label, dan komentar.</li><li>Contoh: berita sekolah, catatan praktikum.</li></ul></div>
+<div class="card page"><h3>Page</h3><ul class="tp"><li>Halaman statis yang tidak terikat tanggal.</li><li>Biasanya muncul sebagai menu tetap.</li><li>Contoh: Tentang, Kontak, Profil.</li></ul></div></div>
+<div class="nxt"><button class="btn ghost" data-go="petunjuk">Kembali</button><button class="btn" data-go="tutorial">Lanjut ke tutorial</button></div>
+</section>
+
+<section id="tutorial">
+<h1>Tutorial langkah demi langkah</h1>
+<div class="tabs" role="tablist" id="tb"></div>
+<div class="tut"><div><div id="mk"></div><button class="btn ghost" id="zm" style="margin-top:10px">🔍 Perbesar gambar</button></div>
+<div class="card"><h3 id="tt"></h3><p id="td"></p><div class="chk" id="ck"></div></div></div>
+<div class="nxt"><button class="btn ghost" data-go="materi">Kembali ke materi</button><button class="btn" data-go="kuis">Lanjut ke kuis</button></div>
+</section>
+
+<section id="kuis">
+<h1>Latihan dan evaluasi</h1>
+<div class="card" id="skor" aria-live="polite"><div>Hasil skor kamu</div><div class="n" id="sn">0</div><p id="sm" style="margin:0 auto 12px"></p>
+<button class="btn" id="re">Coba lagi</button> <button class="btn ghost" data-go="home">Kembali ke beranda</button></div>
+<div id="qs"></div>
+<button class="btn" id="kr">Kirim jawaban</button>
+</section>
+
+<section id="profil">
+<h1>Profil dan informasi</h1>
+<div class="card"><h3>Media Web Interaktif Pembuatan Blogger</h3>
+<p>Prototipe awal media pembelajaran Informatika untuk materi pembuatan website menggunakan Blogger, kelas XII SMA Warga Surakarta.</p>
+<p><b>Pengembang:</b> Winda Luthfi Itsnaini (K3524016)<br><b>Program studi:</b> Pendidikan Teknik Informatika dan Komputer, FKIP, Universitas Sebelas Maret<br><b>Mata kuliah:</b> Teknologi Pembelajaran<br><b>Dosen pengampu:</b> Aris Budianto</p>
+<p class="mut">Status: prototipe tahap proposal. Materi dan soal masih dapat direvisi setelah validasi ahli.</p></div>
+</section>
+</main>
+<div class="ft">© 2026 Pendidikan Teknik Informatika dan Komputer, Universitas Sebelas Maret</div>
+<div class="ov" id="ov"><div><div id="bg"></div><p style="text-align:center"><button class="btn" id="cl">Tutup</button></p></div></div>
+
+<script>
+const $=s=>document.querySelector(s);
+const pages=[["home","🏠","Home"],["petunjuk","ℹ️","Petunjuk"],["materi","📖","Materi"],["tutorial","🧭","Tutorial"],["kuis","✅","Kuis"],["profil","👤","Profil"]];
+function go(id){
+ document.querySelectorAll("section").forEach(s=>s.classList.toggle("on",s.id===id));
+ document.querySelectorAll("nav button").forEach(b=>b.toggleAttribute("aria-current",b.dataset.go===id)||b.removeAttribute("aria-current"));
+ document.querySelectorAll("nav button").forEach(b=>{if(b.dataset.go===id)b.setAttribute("aria-current","page")});
+ $("#nv").classList.remove("on");$("#mn").setAttribute("aria-expanded","false");window.scrollTo(0,0);
+}
+$("#nv").innerHTML=pages.map(p=>`<button data-go="${p[0]}">${p[1]} ${p[2]}</button>`).join("");
+document.addEventListener("click",e=>{const b=e.target.closest("[data-go]");if(b)go(b.dataset.go)});
+$("#mn").onclick=()=>{const o=$("#nv").classList.toggle("on");$("#mn").setAttribute("aria-expanded",o)};
+
+// ilustrasi hero
+function mock(hl,main,big){
+ const items=["Post","Page","Komentar","Statistik","Tata letak","Tema","Setelan"];
+ return `<div class="mock${big?" big":""}" role="img" aria-label="${main.alt}"><aside>${items.map(i=>`<span class="${hl.includes(i)?"hl":""}">${i}</span>`).join("")}</aside><div class="m">${main.html}</div></div>`;
+}
+$("#art").innerHTML=mock([],{alt:"Ilustrasi dashboard Blogger",html:'<b>Blog saya</b><div class="fake"></div><div class="fake" style="width:70%"></div><div class="fake" style="width:85%"></div>'});
+
+// materi
+const subs=[["1. Konsep CMS","CMS (Content Management System) adalah aplikasi untuk membuat dan mengelola konten web tanpa menulis kode dari nol. Blogger menyediakan CMS dan hosting gratis dengan alamat berakhiran blogspot.com."],
+["2. Dashboard Blogger","Dashboard punya menu utama: Post untuk artikel, Page untuk halaman statis, Layout untuk menyusun widget, dan Theme untuk mengganti tampilan."],
+["3. Manajemen konten","Konten dan tampilan tersimpan terpisah. Mengubah tema atau HTML tema tidak menghapus artikel yang sudah ditulis."]];
+$("#sb").innerHTML=subs.map((s,i)=>`<div class="card sub"><button class="t" aria-expanded="false">${s[0]}</button><div class="det">${s[1]}</div></div>`).join("");
+document.querySelectorAll(".sub .t").forEach(b=>b.onclick=()=>{const c=b.parentElement.classList.toggle("open");b.setAttribute("aria-expanded",c)});
+
+// tutorial
+const steps=[
+{n:"Langkah 1",t:"Buat blog baru",d:"Buka blogger.com lalu masuk dengan akun Google. Klik tombol Buat blog, isi judul dan alamat blog.",hl:[],btn:1,main:"Blogger Anda",alt:"Dashboard Blogger dengan tombol Buat blog ditandai",c:["Masuk dengan akun Google","Klik Buat blog","Isi judul dan alamat blog"]},
+{n:"Langkah 2",t:"Atur tema dan tata letak",d:"Di menu samping, buka Tema untuk memilih tampilan. Lalu buka Tata letak untuk menambah dan menyusun widget.",hl:["Tema","Tata letak"],main:"Pilih tema",alt:"Dashboard Blogger dengan menu Tema dan Tata letak ditandai",c:["Buka menu Tema dan pilih tema","Buka Tata letak","Tambahkan satu widget"]},
+{n:"Langkah 3",t:"Tulis dan terbitkan post",d:"Buka menu Post, klik entri baru, tulis judul dan isi, sisipkan gambar, lalu klik Publikasikan.",hl:["Post"],main:"Semua post",alt:"Dashboard Blogger dengan menu Post ditandai",c:["Buka menu Post","Tulis judul, isi, dan gambar","Klik Publikasikan"]}];
+let cur=0;
+function tabs(){
+ $("#tb").innerHTML=steps.map((s,i)=>`<button role="tab" aria-selected="${i===cur}" data-i="${i}">${s.n}</button>`).join("");
+ const s=steps[cur];
+ const body=`<b>${s.main}</b>${s.btn?'<span class="mb hl">+ Buat blog</span>':""}<div class="fake"></div><div class="fake" style="width:70%"></div><div class="fake" style="width:50%"></div>`;
+ $("#mk").innerHTML=mock(s.hl,{alt:s.alt,html:body});
+ $("#tt").textContent=s.n+": "+s.t;$("#td").textContent=s.d;
+ $("#ck").innerHTML=s.c.map(x=>`<label><input type="checkbox"> ${x}</label>`).join("");
+ $("#bg").innerHTML=mock(s.hl,{alt:s.alt,html:body},true);
+}
+$("#tb").onclick=e=>{const b=e.target.closest("button");if(b){cur=+b.dataset.i;tabs()}};
+$("#zm").onclick=()=>{$("#ov").classList.add("on");$("#cl").focus()};
+$("#cl").onclick=()=>$("#ov").classList.remove("on");
+$("#ov").onclick=e=>{if(e.target.id==="ov")$("#ov").classList.remove("on")};
+document.addEventListener("keydown",e=>{if(e.key==="Escape")$("#ov").classList.remove("on")});
+tabs();
+
+// kuis
+const Q=[
+["Apa kepanjangan CMS?",["Content Management System","Computer Media Server","Central Memory System"],0,"CMS adalah Content Management System, aplikasi pengelola konten web."],
+["Alamat blog gratis di Blogger berakhiran…",[".blogspot.com",".school.id",".gov"],0,"Blogger menyediakan hosting gratis dengan alamat blogspot.com."],
+["Menu untuk artikel yang tampil berurutan menurut tanggal adalah…",["Page","Post","Tema"],1,"Post adalah artikel berurutan waktu, yang terbaru tampil paling atas."],
+["Halaman statis seperti “Tentang” sebaiknya dibuat sebagai…",["Post","Widget","Page"],2,"Page dipakai untuk konten tetap yang tidak terikat tanggal."],
+["Menu untuk mengganti tampilan blog adalah…",["Tema","Komentar","Statistik"],0,"Tema mengatur tampilan, sedangkan isi artikel tetap sama."],
+["Menu untuk menyusun widget di blog adalah…",["Setelan","Tata letak","Post"],1,"Tata letak (Layout) mengatur posisi widget pada blog."],
+["Jika HTML tema diubah, artikel lama…",["Pasti hilang semua","Tetap tersimpan karena konten dan tampilan terpisah","Berubah menjadi page"],1,"Data artikel disimpan terpisah dari tampilan tema."],
+["Langkah pertama membuat blog di Blogger adalah…",["Menulis post","Masuk dengan akun Google","Memilih widget"],1,"Blogger membutuhkan akun Google sebelum membuat blog."],
+["Tombol untuk menayangkan artikel agar bisa dibaca umum adalah…",["Publikasikan","Pratinjau","Simpan draf"],0,"Publikasikan menayangkan artikel ke blog. Pratinjau dan draf belum tayang."],
+["Perbedaan blog dengan website statis adalah blog…",["Tidak bisa diubah","Konten dikelola lewat dashboard tanpa coding","Harus berbayar"],1,"Blog dikelola lewat dashboard, sedangkan website statis diubah lewat kode."]];
+function build(){
+ $("#qs").innerHTML=Q.map((q,i)=>`<div class="card q" id="q${i}"><b>${i+1}. ${q[0]}</b>${q[1].map((o,j)=>`<label><input type="radio" name="r${i}" value="${j}"> ${o}</label>`).join("")}<div class="fb"></div></div>`).join("");
+ $("#skor").classList.remove("on");$("#kr").style.display="";
+}
+$("#kr").onclick=()=>{
+ let ok=0;
+ Q.forEach((q,i)=>{
+  const c=document.querySelector(`input[name=r${i}]:checked`),el=$("#q"+i),good=c&&+c.value===q[2];
+  if(good)ok++;
+  el.classList.add(good?"ok":"no");
+  el.querySelector(".fb").textContent=(good?"Benar. ":(c?"Kurang tepat. ":"Belum dijawab. "))+q[3];
+  el.querySelectorAll("input").forEach(x=>x.disabled=true);
+ });
+ const s=Math.round(ok/Q.length*100);
+ $("#sn").textContent=s;
+ $("#sm").textContent=`${ok} dari ${Q.length} soal benar. `+(s>=80?"Pemahamanmu sudah baik.":"Pelajari lagi materi dan tutorial, lalu coba lagi.");
+ $("#skor").classList.add("on");$("#kr").style.display="none";window.scrollTo(0,0);
+};
+$("#re").onclick=()=>{build();window.scrollTo(0,0)};
+build();go("home");
+</script>
+</body>
+</html>
